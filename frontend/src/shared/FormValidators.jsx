@@ -1,3 +1,3 @@
 export const required = (value) => {
-  return !value ? 'Required' : undefined
-}
+  return !value ? 'Required' : undefined;
+};
