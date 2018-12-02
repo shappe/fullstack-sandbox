@@ -1,6 +1,9 @@
-const express = require('express')
-const app = express()
+'use strict';
+const express = require('express');
+const app = express();
 
-app.get('/', (req, res) => res.send('Hello World!'))
+const api = require('./api/routes/');
 
-app.listen(3001, () => console.log('Example app listening on port 3000!'))
+app.use('/api', api);
+
+app.listen(3001, () => console.log('Backend listening on port 3001!'));
