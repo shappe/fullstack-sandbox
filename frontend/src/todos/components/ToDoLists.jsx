@@ -16,23 +16,9 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import Typography from '@material-ui/core/Typography';
 import { ToDoListForm } from './ToDoListForm';
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
+// Fetch todo lists from the server
 const getPersonalTodos = () => {
-  return sleep(1000).then(() =>
-    Promise.resolve({
-      '0000000001': {
-        id: '0000000001',
-        title: 'First List',
-        todos: ['First todo of first list!'],
-      },
-      '0000000002': {
-        id: '0000000002',
-        title: 'Second List',
-        todos: ['First todo of second list!'],
-      },
-    })
-  );
+  return fetch('api/todolists').then((res) => res.json());
 };
 
 export const ToDoLists = compose(
