@@ -10,13 +10,11 @@ const todos = {
     todos: [
       {
         description: 'First todo of first list!',
-        complete: false,
-        deadline: Date.now(),
+        completed: false,
       },
       {
         description: 'Second todo of first list!',
-        complete: true,
-        deadline: Date.now() - 10,
+        completed: true,
       },
     ],
   },
@@ -26,8 +24,15 @@ const todos = {
     todos: [
       {
         description: 'First todo of second list!',
-        complete: true,
-        deadline: Date.now() - 2,
+        completed: true,
+      },
+      {
+        description: 'Second todo of second list!',
+        completed: false,
+      },
+      {
+        description: 'Third todo of second list!',
+        completed: true,
       },
     ],
   },
