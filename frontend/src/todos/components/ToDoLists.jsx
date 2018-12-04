@@ -72,7 +72,7 @@ export const ToDoLists = compose(
       <Card style={style}>
         <CardContent>
           <Typography variant="headline" component="h2">
-            My ToDo Lists
+            My Todo Lists
           </Typography>
           <List>
             {Object.keys(toDoLists).map((key) => (
