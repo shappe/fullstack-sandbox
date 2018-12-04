@@ -52,7 +52,7 @@ export const ToDoListForm = compose(
           render={({
             handleSubmit,
             form: {
-              mutators: { push, pop },
+              mutators: { push, remove },
             },
             submitting,
             values,
@@ -92,7 +92,7 @@ export const ToDoListForm = compose(
                           size="small"
                           color="secondary"
                           className={classes.standardSpace}
-                          onClick={() => fields.remove(index)}>
+                          onClick={() => remove('todos', index)}>
                           <DeleteIcon />
                         </Button>
                       </div>
@@ -116,6 +116,7 @@ export const ToDoListForm = compose(
                     Save
                   </Button>
                 </CardActions>
+                <pre>{JSON.stringify(values, 0, 2)}</pre>;
               </form>
             );
           }}
