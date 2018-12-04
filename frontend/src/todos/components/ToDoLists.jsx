@@ -21,6 +21,11 @@ const getPersonalTodos = () => {
   return fetch('api/todolists').then((res) => res.json());
 };
 
+// Check if all todos in a list is completed
+const allTodosComplete = (todos) => {
+  return !todos.some((todo) => !todo.completed);
+};
+
 export const ToDoLists = compose(
   withStateHandlers(
     {
