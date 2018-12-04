@@ -30,7 +30,7 @@ export const ToDoLists = compose(
     {
       saveToDoList: ({ toDoLists }) => ({ id, todos }) => {
         const toDoListToSave = toDoLists[id];
-        return {
+        const saved = {
           toDoLists: {
             ...toDoLists,
             [id]: {
@@ -40,6 +40,10 @@ export const ToDoLists = compose(
             },
           },
         };
+        console.log('Saving todolist ' + id);
+        console.log(saved);
+
+        return saved;
       },
       saveInitialState: () => (toDoLists) => ({
         toDoLists,
