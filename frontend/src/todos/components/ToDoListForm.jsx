@@ -103,7 +103,13 @@ export const ToDoListForm = compose(
                   <Button
                     type="button"
                     color="primary"
-                    onClick={() => push('todos', undefined)}>
+                    onClick={() =>
+                      push('todos', {
+                        description: '',
+                        completed: false,
+                        deadline: Date.now(),
+                      })
+                    }>
                     Add Todo <AddIcon />
                   </Button>
                   <Button type="submit" variant="raised" color="primary">
