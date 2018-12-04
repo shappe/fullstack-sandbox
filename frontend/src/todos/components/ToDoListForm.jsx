@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
+import Checkbox from '@material-ui/core/Checkbox';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import Typography from '@material-ui/core/Typography';
@@ -68,9 +69,22 @@ export const ToDoListForm = compose(
                           {index + 1}
                         </Typography>
                         <Field
-                          name={`${name}`}
+                          name={`${name}.completed`}
+                          component={({
+                            input: { checked, name, onChange },
+                          }) => (
+                            <Checkbox
+                              name={name}
+                              onChange={onChange}
+                              checked={checked}
+                            />
+                          )}
+                          type="checkbox"
+                        />
+                        <Field
+                          name={`${name}.description`}
                           component={RegularTextField}
-                          label="What to do?"
+                          label={'What to do?'}
                           className={classes.textField}
                           validate={required}
                         />
