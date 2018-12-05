@@ -76,7 +76,6 @@ export const ToDoListForm = compose(
                   component={RegularTextField}
                   validate={required}
                   className={classes.titleRow}
-                  onBlur={handleSubmit}
                 />
                 <FieldArray name="todos">
                   {({ fields }) =>
