@@ -45,9 +45,13 @@ export const ToDoLists = compose(
             },
           },
         };
-        console.log('Saving todolist ' + id + ': ' + title);
-        console.log(saved);
-
+        fetch('/api/todolists', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+          body: JSON.stringify(saved),
+        });
         return saved;
       },
       saveInitialState: () => (toDoLists) => ({
