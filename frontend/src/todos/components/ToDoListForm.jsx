@@ -139,7 +139,7 @@ export const ToDoListForm = compose(
                     Save
                   </Button>
                 </CardActions>
-                <pre>{JSON.stringify(values, 0, 2)}</pre>;
+                {/* Use this to output the current state, for debugging <pre>{JSON.stringify(values, 0, 2)}</pre>; */}
               </form>
             );
           }}
