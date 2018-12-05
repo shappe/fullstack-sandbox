@@ -9,12 +9,12 @@ const todos = {
     title: 'First List',
     todos: [
       {
-        description: 'First todo of first list!',
         completed: false,
+        description: 'First todo of first list!',
       },
       {
-        description: 'Second todo of first list!',
         completed: true,
+        description: 'Second todo of first list!',
       },
     ],
   },
@@ -23,16 +23,16 @@ const todos = {
     title: 'Second List',
     todos: [
       {
+        completed: true,
         description: 'First todo of second list!',
-        completed: true,
       },
       {
-        description: 'Second todo of second list!',
         completed: false,
+        description: 'Second todo of second list!',
       },
       {
-        description: 'Third todo of second list!',
         completed: true,
+        description: 'Third todo of second list!',
       },
     ],
   },
