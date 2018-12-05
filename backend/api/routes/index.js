@@ -42,7 +42,7 @@ router.get('/todolists', (req, res) => res.json(savedTodos));
 
 router.post('/todolists', (req, res) => {
   savedTodos = req.body.toDoLists;
-  console.log(savedTodos);
+  // console.log(savedTodos);
   res.send('Todolist received');
 });
 
