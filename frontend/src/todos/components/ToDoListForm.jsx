@@ -111,7 +111,11 @@ export const ToDoListForm = compose(
                           size="small"
                           color="secondary"
                           className={classes.standardSpace}
-                          onClick={() => remove('todos', index)}>
+                          onClick={() => {
+                            fields.remove(index);
+                            toDoList.todos.splice(index, 1);
+                            saveToDoList(toDoList);
+                          }}>
                           <DeleteIcon />
                         </Button>
                       </div>
