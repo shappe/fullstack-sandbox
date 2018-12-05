@@ -40,10 +40,6 @@ const styles = (theme) => ({
   titleLabel: {
     display: 'flex',
   },
-  todoCheck: {
-    border: '1px solid',
-    borderRadius: '5px',
-  },
 });
 
 export const ToDoListForm = compose(
@@ -51,7 +47,12 @@ export const ToDoListForm = compose(
   branch(({ toDoList }) => !toDoList, renderNothing)
 )(({ toDoList, classes, style, saveToDoList }) => {
   return (
-    <Card style={style}>
+    <Card
+      style={style}
+      className={
+        (classes.form,
+        toDoList.allTodosComplete ? classes.complete : classes.notComplete)
+      }>
       <CardContent>
         <Form
           onSubmit={saveToDoList}
@@ -72,24 +73,18 @@ export const ToDoListForm = compose(
             values,
           }) => {
             return (
-              <form
-                onSubmit={handleSubmit}
-                className={
-                  (classes.form,
-                  toDoList.allTodosComplete
-                    ? classes.complete
-                    : classes.notComplete)
-                }
-                onChange={handleSubmit}>
-                <Typography className={classes.titleLabel} variant="title">
-                  Title:
-                </Typography>
-                <Field
-                  name={`title`}
-                  component={RegularTextField}
-                  validate={required}
-                  className={classes.titleLabel}
-                />
+              <form onSubmit={handleSubmit} onChange={handleSubmit}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <Typography variant="title" className={classes.standardSpace}>
+                    Title:
+                  </Typography>
+                  <Field
+                    name={`title`}
+                    component={RegularTextField}
+                    validate={required}
+                    className={classes.standardSpace}
+                  />
+                </div>
                 <FieldArray name="todos">
                   {({ fields }) =>
                     fields.map((name, index) => (
@@ -102,7 +97,9 @@ export const ToDoListForm = compose(
                         </Typography>
                         <FormControlLabel
                           className={classes.todoCheck}
-                          style={{ paddingRight: '10px' }}
+                          style={{
+                            padding: '0 10px 0 0',
+                          }}
                           control={
                             <Field
                               name={`${name}.completed`}
