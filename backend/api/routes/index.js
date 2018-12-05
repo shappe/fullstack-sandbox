@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const todos = {
+let savedTodos = {
   '0000000001': {
     id: '0000000001',
     title: 'First List',
@@ -38,11 +38,11 @@ const todos = {
   },
 };
 
-router.get('/todolists', (req, res) => res.json(todos));
+router.get('/todolists', (req, res) => res.json(savedTodos));
 
 router.post('/todolists', (req, res) => {
-  todos = req.body.toDoLists;
-  console.log(todos);
+  savedTodos = req.body.toDoLists;
+  console.log(savedTodos);
   res.send('Todolist received');
 });
 
