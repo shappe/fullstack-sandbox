@@ -40,4 +40,10 @@ const todos = {
 
 router.get('/todolists', (req, res) => res.json(todos));
 
+router.post('/todolists', (req, res) => {
+  todos = req.body.toDoLists;
+  console.log(todos);
+  res.send('Todolist received');
+});
+
 module.exports = router;
