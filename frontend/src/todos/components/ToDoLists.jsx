@@ -23,7 +23,7 @@ const getPersonalTodos = () => {
 
 // Check if all todos in a list is completed
 const allTodosComplete = (todos) => {
-  return !todos.some((todo) => !todo.completed);
+  return todos.length !== 0 && !todos.some((todo) => !todo.completed);
 };
 
 export const ToDoLists = compose(
@@ -40,6 +40,7 @@ export const ToDoLists = compose(
             [id]: {
               id,
               title,
+              allTodosComplete: allTodosComplete(todos),
               todos,
             },
           },

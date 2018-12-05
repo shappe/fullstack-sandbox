@@ -31,6 +31,9 @@ const styles = (theme) => ({
     flexDirection: 'column',
     flexGrow: 1,
   },
+  complete: {
+    'background-color': 'rgba(0, 200, 0, 0.3)',
+  },
 });
 
 export const ToDoListForm = compose(
@@ -59,7 +62,15 @@ export const ToDoListForm = compose(
             values,
           }) => {
             return (
-              <form onSubmit={handleSubmit} className={classes.form}>
+              <form
+                onSubmit={handleSubmit}
+                className={
+                  (classes.form,
+                  toDoList.allTodosComplete
+                    ? classes.complete
+                    : classes.notComplete)
+                }
+                onChange={handleSubmit}>
                 <Field
                   name={`title`}
                   component={RegularTextField}
