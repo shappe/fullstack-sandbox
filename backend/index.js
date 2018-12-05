@@ -1,8 +1,11 @@
 'use strict';
 const express = require('express');
 const app = express();
+var bodyParser = require('body-parser');
 
 const api = require('./api/routes/');
+
+app.use(bodyParser.json());
 
 app.use('/api', api);
 
