@@ -9,6 +9,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import Typography from '@material-ui/core/Typography';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 import { Form, Field } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 import { FieldArray } from 'react-final-form-arrays';
@@ -30,9 +32,17 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     flexGrow: 1,
+    padding: '2px',
   },
   complete: {
-    'background-color': 'rgba(0, 200, 0, 0.3)',
+    backgroundColor: 'rgba(0, 200, 0, 0.3)',
+  },
+  titleLabel: {
+    display: 'flex',
+  },
+  todoCheck: {
+    border: '1px solid',
+    borderRadius: '5px',
   },
 });
 
@@ -71,34 +81,47 @@ export const ToDoListForm = compose(
                     : classes.notComplete)
                 }
                 onChange={handleSubmit}>
+                <Typography className={classes.titleLabel} variant="title">
+                  Title:
+                </Typography>
                 <Field
                   name={`title`}
                   component={RegularTextField}
                   validate={required}
-                  className={classes.titleRow}
+                  className={classes.titleLabel}
                 />
                 <FieldArray name="todos">
                   {({ fields }) =>
                     fields.map((name, index) => (
                       <div key={name} className={classes.todoLine}>
                         <Typography
+                          style={{ marginRight: '25px' }}
                           className={classes.standardSpace}
                           variant="title">
                           {index + 1}
                         </Typography>
-                        <Field
-                          name={`${name}.completed`}
-                          component={({
-                            input: { checked, name, onChange },
-                          }) => (
-                            <Checkbox
-                              name={name}
-                              onChange={onChange}
-                              checked={checked}
+                        <FormControlLabel
+                          className={classes.todoCheck}
+                          style={{ paddingRight: '10px' }}
+                          control={
+                            <Field
+                              name={`${name}.completed`}
+                              component={({
+                                input: { checked, name, onChange },
+                              }) => (
+                                <Checkbox
+                                  name={name}
+                                  onChange={onChange}
+                                  checked={checked}
+                                />
+                              )}
+                              type="checkbox"
                             />
-                          )}
-                          type="checkbox"
+                          }
+                          label="Done?"
+                          labelPlacement="end"
                         />
+
                         <Field
                           name={`${name}.description`}
                           component={RegularTextField}
