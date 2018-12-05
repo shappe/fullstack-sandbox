@@ -33,19 +33,18 @@ export const ToDoLists = compose(
       activeList: null,
     },
     {
-      saveToDoList: ({ toDoLists }) => ({ id, todos }) => {
-        const toDoListToSave = toDoLists[id];
+      saveToDoList: ({ toDoLists }) => ({ id, todos, title }) => {
         const saved = {
           toDoLists: {
             ...toDoLists,
             [id]: {
               id,
-              title: toDoListToSave.title,
+              title,
               todos,
             },
           },
         };
-        console.log('Saving todolist ' + id);
+        console.log('Saving todolist ' + id + ': ' + title);
         console.log(saved);
 
         return saved;
