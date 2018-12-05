@@ -40,12 +40,13 @@ export const ToDoListForm = compose(
   return (
     <Card style={style}>
       <CardContent>
-        <Typography variant="headline" component="h2">
-          {toDoList.title}
-        </Typography>
         <Form
           onSubmit={saveToDoList}
-          initialValues={{ id: toDoList.id, todos: toDoList.todos }}
+          initialValues={{
+            id: toDoList.id,
+            todos: toDoList.todos,
+            title: toDoList.title,
+          }}
           mutators={{
             ...arrayMutators,
           }}
@@ -59,6 +60,13 @@ export const ToDoListForm = compose(
           }) => {
             return (
               <form onSubmit={handleSubmit} className={classes.form}>
+                <Field
+                  name={`title`}
+                  component={RegularTextField}
+                  validate={required}
+                  className={classes.titleRow}
+                  onBlur={handleSubmit}
+                />
                 <FieldArray name="todos">
                   {({ fields }) =>
                     fields.map((name, index) => (
